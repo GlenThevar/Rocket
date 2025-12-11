@@ -52,6 +52,7 @@ const Navbar = () => {
                     <button
                         id="open-menu"
                         className="md:hidden active:scale-90 transition"
+                        aria-label="Open navigation menu"
                         onClick={() => setMenuOpen(true)}
                     >
                         <svg
@@ -75,7 +76,15 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {menuOpen && (
-                <div className="fixed inset-0 z-[100] bg-black/60 text-white backdrop-blur flex flex-col items-center justify-center text-lg gap-8 md:hidden transition-transform duration-300">
+                <div
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Mobile navigation menu"
+                    className="fixed inset-0 z-[100] bg-black/60 text-white backdrop-blur flex flex-col items-center justify-center text-lg gap-8 md:hidden transition-transform duration-300"
+                    onKeyDown={(e) => {
+                        if (e.key === "Escape") setMenuOpen(false);
+                    }}
+                >
                     <Link to="/" onClick={() => setMenuOpen(false)}>
                         Home
                     </Link>
@@ -90,7 +99,8 @@ const Navbar = () => {
                     </Link>
 
                     <button
-                        className="active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-slate-100 hover:bg-slate-200 transition text-black rounded-md flex"
+                        className="active:ring-2 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-slate-100 hover:bg-slate-200 transition text-black rounded-md flex"
+                        aria-label="Close navigation menu"
                         onClick={() => setMenuOpen(false)}
                     >
                         <svg
