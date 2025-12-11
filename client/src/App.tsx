@@ -7,15 +7,20 @@ import Pricing from "./pages/Pricing";
 import Projects from "./pages/Projects";
 import View from "./pages/View";
 import Community from "./pages/Community";
+import Navbar from "./components/Navbar";
 
 const App = () => {
     return (
         <div>
+            <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<MyProjects />} />
                 <Route path="/preview/:projectId" element={<Preview />} />
-                <Route path="/preview/:projectId/:versionId" element={<Preview />} />
+                <Route
+                    path="/preview/:projectId/:versionId"
+                    element={<Preview />}
+                />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/projects/:projectId" element={<Projects />} />
                 <Route path="/view/:projectId" element={<View />} />
