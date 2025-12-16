@@ -240,3 +240,119 @@ export const createUserProject = async (req: Request, res: Response) => {
         return res.status(500).json({ message: error.message || error.code });
     }
 };
+
+// Get a single user project
+export const getUserProject = async (req: Request, res: Response) => {
+    try {
+        const userId = req.userId;
+        if (!userId) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        const { projectId } = req.params;
+
+        if (!projectId) {
+            return res.status(400).json({ message: "Project ID is required" });
+        }
+
+        const project = await prisma.websiteProject.findUnique({
+            where: {
+                id: projectId,
+                userId,
+            },
+            include: {
+                conversation: {
+                    orderBy: {
+                        timestamp: "asc",
+                    },
+                },
+                versions: {
+                    orderBy: {
+                        timestamp: "asc",
+                    },
+                },
+            },
+        });
+
+        if (!project) {
+            return res.status(404).json({ message: "Project not found" });
+        }
+
+        res.json({ project });
+    } catch (error: any) {
+        console.error("Error in getUserProject controller", error);
+        return res.status(500).json({ message: error.message || error.code });
+    }
+};
+
+// Get all user projects
+export const getUserProjects = async (req: Request, res: Response) => {
+    try {
+        const userId = req.userId;
+        if (!userId) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        const projects = await prisma.websiteProject.findMany({
+            where: {
+                userId,
+            },
+            orderBy: {
+                updatedAt: "desc",
+            },
+        });
+
+        res.json({ projects });
+    } catch (error: any) {
+        console.error("Error in getUserProjects controller", error);
+        return res.status(500).json({ message: error.message || error.code });
+    }
+};
+
+// Toggle project publish
+export const togglePublish = async (req: Request, res: Response) => {
+    try {
+        const userId = req.userId;
+        if (!userId) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        const { projectId } = req.params;
+
+        if (!projectId) {
+            return res.status(400).json({ message: "Project ID is required" });
+        }
+
+        const project = await prisma.websiteProject.findUnique({
+            where: {
+                id: projectId,
+                userId,
+            },
+        });
+
+        if (!project) {
+            return res.status(404).json({ message: "Project not found" });
+        }
+
+        await prisma.websiteProject.update({
+            where: {
+                id: projectId,
+            },
+            data: {
+                isPublished: !project.isPublished,
+            },
+        });
+
+        res.json({
+            message: project.isPublished
+                ? "Project Unpublished"
+                : "Project Published",
+        });
+    } catch (error: any) {
+        console.error("Error in togglePublish controller", error);
+        return res.status(500).json({ message: error.message || error.code });
+    }
+};
+
+// To purchase credits
+export const purchaseCredits = async (req: Request, res: Response) => {};
