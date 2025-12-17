@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![AI Site Builder](https://raw.githubusercontent.com/amaan-ur-raheman/ai-site-builder/main/client/public/readme/home-page.png)
+![AI Site Builder](assets/home-page.png)
 
 **Transform your ideas into stunning websites with the power of AI**
 
@@ -46,19 +46,19 @@
 <div align="center">
 
 ### 🏠 Homepage
-![Homepage](https://raw.githubusercontent.com/amaan-ur-raheman/ai-site-builder/main/client/public/readme/home-page.png)
+![Homepage](assets/home-page.png)
 
 ### 💰 Pricing Plans
-![Pricing](https://raw.githubusercontent.com/amaan-ur-raheman/ai-site-builder/main/client/public/readme/pricing.png)
+![Pricing](assets/pricing.png)
 
 ### 👥 Community Gallery
-![Community](https://raw.githubusercontent.com/amaan-ur-raheman/ai-site-builder/main/client/public/readme/community.png)
+![Community](assets/community.png)
 
 ### 📁 Project Management
-![My Projects](https://raw.githubusercontent.com/amaan-ur-raheman/ai-site-builder/main/client/public/readme/my-projects.png)
+![My Projects](assets/my-projects.png)
 
 ### 🔧 Website Builder
-![Project Builder](https://raw.githubusercontent.com/amaan-ur-raheman/ai-site-builder/main/client/public/readme/project-builder.png)
+![Project Builder](assets/project-builder.png)
 
 </div>
 
