@@ -1,19 +1,44 @@
+import api from "@/config/axios";
+import { authClient } from "@/lib/auth-client";
+
 import { Loader2Icon } from "lucide-react";
 import { useState, type FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Home = () => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
+    const { data: session } = authClient.useSession();
+    const navigate = useNavigate();
 
     const onSubmitHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        setLoading(true);
+        try {
+            if (!session?.user) {
+                return toast.error("Please sign in to create a project.");
+            } else if (!input.trim()) {
+                return toast.error("Please enter a message.");
+            }
 
-        // Simulate API call
-        setTimeout(() => {
+            setLoading(true);
+
+            const { data } = await api.post("/api/user/project", {
+                initial_prompt: input,
+            });
+
             setLoading(false);
-        }, 3000);
+
+            navigate(`/projects/${data.projectId}`);
+        } catch (error: any) {
+            toast.error(
+                error?.response?.data?.message ||
+                    error?.message ||
+                    "Something went wrong"
+            );
+            console.error(error);
+        }
     };
 
     return (
