@@ -9,6 +9,7 @@ import {
 import type { Project } from "../types";
 import { iframeScript } from "../assets/assets";
 import EditorPanel from "./EditorPanel";
+import LoaderSteps from "./LoaderSteps";
 
 interface ProjectPreviewProps {
     project: Project;
@@ -142,7 +143,7 @@ const ProjectPreview = forwardRef<ProjectPreviewRef, ProjectPreviewProps>(
                         )}
                     </>
                 ) : (
-                    isGenerating && <div>Loading</div>
+                    isGenerating && <LoaderSteps />
                 )}
             </div>
         );
