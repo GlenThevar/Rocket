@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { toast } from "sonner";
 
 import { appPlans } from "../assets/assets";
 import Footer from "../components/Footer";
+import { authClient } from "@/lib/auth-client";
+import api from "@/config/axios";
 
 interface Plan {
     id: string;
@@ -13,9 +16,29 @@ interface Plan {
 }
 
 const Pricing = () => {
-    const [plans, setPlans] = useState<Plan[]>(appPlans);
+    const { data: session } = authClient.useSession();
+    const [plans] = useState<Plan[]>(appPlans);
 
-    const handlePurchase = async (planId: string) => {};
+    const handlePurchase = async (planId: string) => {
+        try {
+            if (!session?.user)
+                return toast.info("Please sign in to purchase a plan");
+            const { data } = await api.post("/api/user/purchase-credits", {
+                planId,
+            });
+            if (!data?.payment_link) {
+                throw new Error("Invalid payment link received");
+            }
+            window.location.href = data.payment_link;
+        } catch (error: any) {
+            toast.error(
+                error?.response?.data?.message ||
+                    error.message ||
+                    "Something went wrong"
+            );
+            console.error(error);
+        }
+    };
 
     return (
         <>
