@@ -10,23 +10,23 @@ const Settings = () => {
             <AccountSettingsCards
                 classNames={{
                     card: {
-                        base: "bg-black/10 ring ring-indigo-950 max-w-xl mx-auto",
-                        footer: "bg-black/10 ring ring-indigo-950",
+                        base: "bg-black/10  max-w-xl mx-auto",
+                        footer: "bg-black/10",
                     },
                 }}
             />
             <div className="w-full">
                 <ChangePasswordCard
                     classNames={{
-                        base: "bg-black/10 ring ring-indigo-950 max-w-xl mx-auto",
-                        footer: "bg-black/10 ring ring-indigo-950",
+                        base: "bg-black/10 max-w-xl mx-auto",
+                        footer: "bg-black/10 ",
                     }}
                 />
             </div>
             <div className="w-full">
                 <DeleteAccountCard
                     classNames={{
-                        base: "bg-black/10 ring ring-indigo-950 max-w-xl mx-auto",
+                        base: "bg-black/10 max-w-xl mx-auto",
                     }}
                 />
             </div>

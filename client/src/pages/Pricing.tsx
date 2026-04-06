@@ -33,8 +33,8 @@ const Pricing = () => {
         } catch (error: any) {
             toast.error(
                 error?.response?.data?.message ||
-                    error.message ||
-                    "Something went wrong"
+                error.message ||
+                "Something went wrong"
             );
             console.error(error);
         }
@@ -58,7 +58,7 @@ const Pricing = () => {
                         {plans.map((plan) => (
                             <div
                                 key={plan.id}
-                                className="p-6 bg-black/20 ring ring-indigo-950 mx-auto w-full max-w-sm rounded-lg text-white shadow-lg hover:ring-indigo-500 transition-all duration-400"
+                                className="p-6 bg-black/20  mx-auto w-full max-w-sm rounded-lg text-white shadow-lg hover:ring-1 hover:ring-white transition-all duration-400"
                             >
                                 <h3 className="text-xl font-bold">
                                     {plan.name}
@@ -105,7 +105,13 @@ const Pricing = () => {
                                 </ul>
                                 <button
                                     onClick={() => handlePurchase(plan.id)}
-                                    className="w-full py-2 px-4 bg-indigo-500 hover:bg-indigo-600 active:scale-95 text-sm rounded-md transition-all"
+                                    className="px-6 py-1.5 max-sm:text-sm text-black font-medium
+               bg-gradient-to-r from-[#00FFC6] to-[#009E7F]
+               rounded-md
+               shadow-[0_0_20px_rgba(0,255,198,0.4)]
+               hover:shadow-[0_0_30px_rgba(0,255,198,0.7)]
+               hover:scale-105 active:scale-95
+               transition-all duration-200"
                                 >
                                     Buy Now
                                 </button>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserButton } from "@daveyplate/better-auth-ui";
 
 import { authClient } from "@/lib/auth-client";
-import { assets } from "../assets/assets";
+
 import api from "@/config/axios";
 import { toast } from "sonner";
 
@@ -21,8 +21,8 @@ const Navbar = () => {
         } catch (error: any) {
             toast.error(
                 error?.response?.data?.message ||
-                    error?.message ||
-                    "Something went wrong"
+                error?.message ||
+                "Something went wrong"
             );
             console.error(error);
         }
@@ -38,11 +38,10 @@ const Navbar = () => {
         <>
             <nav className="z-50 flex items-center justify-between w-full py-4 px-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur border-b text-white border-slate-800">
                 <Link to="/">
-                    <img
-                        src={assets.logo}
-                        alt="AI Site Builder Logo"
-                        className="h-5 sm:h-7"
-                    />
+                    <div className="flex items-center justify-center">
+                        <img src="/rocket-white.svg" alt="" className="h-5 sm:h-15" />
+                        <p className="font-bold text-3xl">Rocket</p>
+                    </div>
                 </Link>
 
                 <div className="hidden md:flex items-center gap-8 transition duration-500">
@@ -73,7 +72,13 @@ const Navbar = () => {
                     {!session?.user ? (
                         <button
                             onClick={() => navigate("/auth/sign-in")}
-                            className="px-6 py-1.5 max-sm:text-sm bg-indigo-600 active:scale-95 hover:bg-indigo-700 transition rounded-md"
+                            className="px-6 py-1.5 max-sm:text-sm text-black font-medium
+               bg-gradient-to-r from-[#00FFC6] to-[#009E7F]
+               rounded-md
+               shadow-[0_0_20px_rgba(0,255,198,0.4)]
+               hover:shadow-[0_0_30px_rgba(0,255,198,0.7)]
+               hover:scale-105 active:scale-95
+               transition-all duration-200"
                         >
                             Get started
                         </button>
@@ -174,7 +179,7 @@ const Navbar = () => {
                     {" "}
                     <path
                         d="M1279.12 651.482c-22 6.106-44 12.212-135.83 19.142-91.82 6.929-252.813 14.497-345.534 14.119s-112.296-8.932-132.029-20.074c-40.902-23.095-67.695-48.431-92.222-82.426-43.46-60.236-63.449-115.445-66.098-143.181-2.37-24.804 6.608-45.711 18.307-63.328 12.043-18.137 33.695-29.82 71.913-43.681 73.132-26.523 132.819-39.093 158.087-37.728 35.983 1.944 85.151 19.972 133.921 42.519 54.55 25.219 85.81 54.21 147.755 103.202 40.89 42.153 74.78 87.455 96.15 121.421 9.68 13.541 17 19.579 26.15 28.613"
-                        stroke="#8C00FF"
+                        stroke="#00FFC6"
                         strokeWidth="130"
                         strokeLinecap="round"
                     />{" "}
@@ -183,7 +188,7 @@ const Navbar = () => {
                     {" "}
                     <path
                         d="M984.952 466.869c-15.802 15.902-31.604 31.803-106.587 82.344-74.982 50.541-208.666 135.24-287.962 179.98-79.297 44.74-100.155 46.955-122.408 47.039-46.123.173-81.297-8.423-118.747-25.508-66.356-30.274-110.243-67.666-125.983-90.043-14.077-20.012-16.578-42.214-15.158-62.931 1.461-21.329 14.257-41.82 40.13-72.221 49.508-58.173 94.326-97.906 116.549-109.022 31.647-15.829 82.36-24.343 134.93-28.808 58.801-4.994 99.563 4.55 176.224 16.248 55.375 16.094 106.309 38.276 141.054 56.869 14.842 6.848 24.021 8.443 36.22 11.703"
-                        stroke="#3E0090"
+                        stroke="#009E7F"
                         strokeWidth="130"
                         strokeLinecap="round"
                     />{" "}
