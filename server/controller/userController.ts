@@ -106,7 +106,7 @@ export const createUserProject = async (req: Request, res: Response) => {
 
         // Enhance user prompt
         const promptEnhanceResponse = await openai.chat.completions.create({
-            model: "qwen/qwen3.6-plus:free",
+            model: "openai/gpt-oss-120b:free",
             messages: [
                 {
                     role: "system",
@@ -150,7 +150,7 @@ export const createUserProject = async (req: Request, res: Response) => {
 
         // Generating website code
         const codeGenerationResponse = await openai.chat.completions.create({
-            model: "qwen/qwen3.6-plus:free",
+            model: "openai/gpt-oss-120b:free",
             messages: [
                 {
                     role: "system",

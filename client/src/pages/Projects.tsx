@@ -47,8 +47,8 @@ const Projects = () => {
         } catch (error: any) {
             toast.error(
                 error?.response?.data?.message ||
-                    error.message ||
-                    "Something went wrong"
+                error.message ||
+                "Something went wrong"
             );
             console.error(error);
         }
@@ -69,8 +69,8 @@ const Projects = () => {
         } catch (error: any) {
             toast.error(
                 error?.response?.data?.message ||
-                    error.message ||
-                    "Something went wrong"
+                error.message ||
+                "Something went wrong"
             );
             console.error(error);
         } finally {
@@ -108,8 +108,8 @@ const Projects = () => {
         } catch (error: any) {
             toast.error(
                 error?.response?.data?.message ||
-                    error.message ||
-                    "Something went wrong"
+                error.message ||
+                "Something went wrong"
             );
             console.error(error);
         }
@@ -148,9 +148,9 @@ const Projects = () => {
                 {/* LEFT */}
                 <div className="flex items-center gap-2 sm:min-w-90 text-nowrap">
                     <img
-                        src="/favicon.svg"
+                        src="/rocket-white.svg"
                         alt="Logo"
-                        className="h-6 cursor-pointer"
+                        className="h-8 cursor-pointer"
                         onClick={() => navigate("/")}
                     />
                     <div className="max-w-64 sm:max-w-xs">
@@ -180,21 +180,18 @@ const Projects = () => {
                 <div className="hidden sm:flex gap-2 bg-gray-950 p-1.5 rounded-md">
                     <SmartphoneIcon
                         onClick={() => setDevice("phone")}
-                        className={`size-6 p-1 rounded cursor-pointer ${
-                            device === "phone" ? "bg-gray-700" : ""
-                        }`}
+                        className={`size-6 p-1 rounded cursor-pointer ${device === "phone" ? "bg-gray-700" : ""
+                            }`}
                     />
                     <TabletIcon
                         onClick={() => setDevice("tablet")}
-                        className={`size-6 p-1 rounded cursor-pointer ${
-                            device === "tablet" ? "bg-gray-700" : ""
-                        }`}
+                        className={`size-6 p-1 rounded cursor-pointer ${device === "tablet" ? "bg-gray-700" : ""
+                            }`}
                     />
                     <LaptopIcon
                         onClick={() => setDevice("desktop")}
-                        className={`size-6 p-1 rounded cursor-pointer ${
-                            device === "desktop" ? "bg-gray-700" : ""
-                        }`}
+                        className={`size-6 p-1 rounded cursor-pointer ${device === "desktop" ? "bg-gray-700" : ""
+                            }`}
                     />
                 </div>
 
