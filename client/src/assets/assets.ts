@@ -90,16 +90,18 @@ export const iframeScript = `
             window.parent.postMessage({
                 type: 'ELEMENT_SELECTED',
                 payload: {
-                tagName: selectedElement.tagName,
-                className: selectedElement.className,
-                text: selectedElement.innerText,
-                styles: {
-                    padding: computedStyle.padding,
-                    margin: computedStyle.margin,
-                    backgroundColor: computedStyle.backgroundColor,
-                    color: computedStyle.color,
-                    fontSize: computedStyle.fontSize
-                }
+                    tagName: selectedElement.tagName.toLowerCase(),
+                    className: selectedElement.className,
+                    text: selectedElement.innerText,
+                    src: selectedElement.tagName.toLowerCase() === 'img' ? selectedElement.getAttribute('src') : undefined,
+                    styles: {
+                        padding: computedStyle.padding,
+                        margin: computedStyle.margin,
+                        backgroundColor: computedStyle.backgroundColor,
+                        color: computedStyle.color,
+                        fontSize: computedStyle.fontSize,
+                        backgroundImage: computedStyle.backgroundImage
+                    }
                 }
             }, '*');
             });
@@ -109,15 +111,25 @@ export const iframeScript = `
                 const updates = event.data.payload;
 
                 if (updates.className !== undefined) {
-                selectedElement.className = updates.className;
+                    selectedElement.className = updates.className;
                 }
 
                 if (updates.text !== undefined) {
-                selectedElement.innerText = updates.text;
+                    selectedElement.innerText = updates.text;
+                }
+
+                // If updating an image, set the src attribute
+                if (selectedElement.tagName.toLowerCase() === 'img' && updates.src !== undefined) {
+                    selectedElement.setAttribute('src', updates.src || '');
                 }
 
                 if (updates.styles) {
-                Object.assign(selectedElement.style, updates.styles);
+                    // Special handling for backgroundImage
+                    if (updates.styles.backgroundImage !== undefined) {
+                        selectedElement.style.backgroundImage = updates.styles.backgroundImage;
+                    }
+                    const { backgroundImage, ...otherStyles } = updates.styles;
+                    Object.assign(selectedElement.style, otherStyles);
                 }
             } else if (event.data.type === 'CLEAR_SELECTION_REQUEST') {
                 clearSelected();

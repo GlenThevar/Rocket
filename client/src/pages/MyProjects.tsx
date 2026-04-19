@@ -72,21 +72,38 @@ const MyProjects = () => {
                     </div>
                 ) : projects.length > 0 ? (
                     <div className="py-10 min-h-[80vh]">
-                        <div className="flex items-center justify-between mb-12">
-                            <h1 className="text-2xl font-medium text-white">
-                                My Projects
-                            </h1>
+
+                        {/* Dashboard Summary Cards */}
+                        <div className="flex flex-wrap gap-4 justify-between items-center mb-8 bg-transparent">
+                            <div className="flex flex-1 gap-4 min-w-0">
+                                <div className="flex-1 min-w-[180px] bg-gray-900/80 border border-gray-700 rounded-xl p-6 flex flex-col justify-center">
+                                    <span className="text-xs text-gray-400 mb-1">Total Projects</span>
+                                    <span className="text-2xl font-semibold text-white">{projects.length}</span>
+                                </div>
+                                <div className="flex-1 min-w-[180px] bg-gray-900/80 border border-gray-700 rounded-xl p-6 flex flex-col justify-center">
+                                    <span className="text-xs text-gray-400 mb-1">Published</span>
+                                    <span className="text-2xl font-semibold text-white">{projects.filter(p => p.isPublished).length}</span>
+                                </div>
+                                <div className="flex-1 min-w-[180px] bg-gray-900/80 border border-gray-700 rounded-xl p-6 flex flex-col justify-center">
+                                    <span className="text-xs text-gray-400 mb-1">Drafts</span>
+                                    <span className="text-2xl font-semibold text-white">{projects.filter(p => !p.isPublished).length}</span>
+                                </div>
+                                <div className="flex-1 min-w-[180px] bg-gray-900/80 border border-gray-700 rounded-xl p-6 flex flex-col justify-center">
+                                    <span className="text-xs text-gray-400 mb-1">Last Updated</span>
+                                    <span className="text-2xl font-semibold text-white">
+                                        {projects.length > 0 ? new Date(Math.max(...projects.map(p => new Date(p.updatedAt).getTime()))).toLocaleDateString() : '--'}
+                                    </span>
+                                </div>
+                            </div>
                             <button
                                 onClick={() => navigate("/")}
-                                className="flex items-center gap-2 text-black px-3 sm:px-6 py-1 sm:py-2 rounded bg-linear-to-br from-[#00FFC6] to-[#009E7F] shadow-[0_0_20px_rgba(0,255,198,0.4)]
-               hover:shadow-[0_0_30px_rgba(0,255,198,0.7)]
-               hover:scale-105 active:scale-95
-               transition-all duration-200"
+                                className="ml-4 flex items-center gap-2 text-black px-6 py-2 rounded bg-gradient-to-br from-[#00FFC6] to-[#009E7F] shadow-[0_0_20px_rgba(0,255,198,0.4)] hover:shadow-[0_0_30px_rgba(0,255,198,0.7)] hover:scale-105 active:scale-95 transition-all duration-200"
                             >
-
                                 <PlusIcon size={18} /> Create New
                             </button>
                         </div>
+
+                        <h1 className="text-2xl font-medium text-white mb-6">My Projects</h1>
 
                         <div className="flex flex-wrap gap-3.5">
                             {projects.map((project: Project) => (
