@@ -169,7 +169,6 @@ export const createUserProject = async (req: Request, res: Response) => {
                     - Use Tailwind animations and transitions (animate-*, transition-*)
                     - Include all necessary meta tags
                     - Use Google Fonts CDN if needed for custom fonts
-                    - Use placeholder images from https://placehold.co/600x400
                     - Use Tailwind gradient classes for beautiful backgrounds
                     - Make sure all buttons, cards, and components use Tailwind styling
 
@@ -178,6 +177,7 @@ export const createUserProject = async (req: Request, res: Response) => {
                     2. You MUST NOT place anything in "reasoning", "analysis", "reasoning_details", or any hidden fields.
                     3. You MUST NOT include internal thoughts, explanations, analysis, comments, or markdown.
                     4. Do NOT include markdown, explanations, notes, or code fences.
+                    5. For all image tags, use the 'https://picsum.photos/seed/[unique-id]/[width]/[height]' service. Do NOT use random external URLs that might 404
 
                     The HTML should be complete and ready to render as-is with Tailwind CSS.`,
                 },
