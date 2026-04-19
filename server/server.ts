@@ -14,8 +14,6 @@ const app = express();
 
 const port = 3000;
 
-const __dirname = path.resolve();
-
 const corsOption: CorsOptions = {
     origin: process.env.TRUSTED_ORIGINS?.split(",") || [],
     credentials: true,
@@ -33,6 +31,7 @@ app.use("/api/user", userRouter);
 app.use("/api/project", projectRouter);
 
 
+const __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/dist")));
 
@@ -42,5 +41,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at ${port}`);
 });
