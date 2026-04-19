@@ -78,7 +78,7 @@ const MyProjects = () => {
                             </h1>
                             <button
                                 onClick={() => navigate("/")}
-                                className="flex items-center gap-2 text-black px-3 sm:px-6 py-1 sm:py-2 rounded bg-gradient-to-br from-[#00FFC6] to-[#009E7F] shadow-[0_0_20px_rgba(0,255,198,0.4)]
+                                className="flex items-center gap-2 text-black px-3 sm:px-6 py-1 sm:py-2 rounded bg-linear-to-br from-[#00FFC6] to-[#009E7F] shadow-[0_0_20px_rgba(0,255,198,0.4)]
                hover:shadow-[0_0_30px_rgba(0,255,198,0.7)]
                hover:scale-105 active:scale-95
                transition-all duration-200"
@@ -116,7 +116,7 @@ const MyProjects = () => {
                                     </div>
 
                                     {/* Project Details */}
-                                    <div className="p-4 text-white bg-gradient-to-b from-transparent to-transparent group-hover:from-indigo-950 transition-colors">
+                                    <div className="p-4 text-white bg-linear-to-b from-transparent to-transparent group-hover:from-indigo-950 transition-colors">
                                         <div className="flex items-start justify-between">
                                             <h2 className="text-lg font-medium line-clamp-2">
                                                 {project.name}
@@ -183,7 +183,7 @@ const MyProjects = () => {
                         </h1>
                         <button
                             onClick={() => navigate("/")}
-                            className="mt-5 px-6 py-1.5 max-sm:text-sm text-black font-medium bg-gradient-to-r from-[#00FFC6] to-[#009E7F] rounded-md shadow-[0_0_20px_rgba(0,255,198,0.4)] hover:shadow-[0_0_30px_rgba(0,255,198,0.7)] hover:scale-105 active:scale-95 transition-all duration-200"
+                            className="mt-5 px-6 py-1.5 max-sm:text-sm text-black font-medium bg-linear-to-r from-[#00FFC6] to-[#009E7F] rounded-md shadow-[0_0_20px_rgba(0,255,198,0.4)] hover:shadow-[0_0_30px_rgba(0,255,198,0.7)] hover:scale-105 active:scale-95 transition-all duration-200"
                         >
                             Create New Project
                         </button>

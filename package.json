@@ -1,0 +1,22 @@
+{
+  "name": "websitebuilder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix client && npm install --prefix server && npm run build --prefix client",
+    "start": "npm run start --prefix server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GlenThevar/WebBuilder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GlenThevar/WebBuilder/issues"
+  },
+  "homepage": "https://github.com/GlenThevar/WebBuilder#readme"
+}
