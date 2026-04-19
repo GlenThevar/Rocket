@@ -131,7 +131,7 @@ const MyProjects = () => {
                                         </p>
 
                                         <div
-                                            onClick={(e) => e.stopPropagation()}
+                                            // onClick={(e) => e.stopPropagation()}
                                             className="flex justify-between items-center mt-6"
                                         >
                                             <span className="text-xs text-gray-500">
