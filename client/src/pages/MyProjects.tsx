@@ -183,7 +183,7 @@ const MyProjects = () => {
                         </h1>
                         <button
                             onClick={() => navigate("/")}
-                            className="text-white px-5 py-2 mt-5 rounded-md bg-indigo-500 hover:bg-indigo-600 active:scale-95 transition-all"
+                            className="mt-5 px-6 py-1.5 max-sm:text-sm text-black font-medium bg-gradient-to-r from-[#00FFC6] to-[#009E7F] rounded-md shadow-[0_0_20px_rgba(0,255,198,0.4)] hover:shadow-[0_0_30px_rgba(0,255,198,0.7)] hover:scale-105 active:scale-95 transition-all duration-200"
                         >
                             Create New Project
                         </button>

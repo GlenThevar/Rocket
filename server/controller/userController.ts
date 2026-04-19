@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import Stripe from "stripe";
-import "dotenv/config";
 
 import prisma from "../lib/prisma.js";
 import openai from "../config/openai.js";
+
+import "dotenv/config";
 
 // Get the user credits
 export const getUserCredits = async (req: Request, res: Response) => {

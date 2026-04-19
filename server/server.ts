@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import "dotenv/config";
 import cors, { CorsOptions } from "cors";
 import { toNodeHandler } from "better-auth/node";
 
@@ -7,6 +6,8 @@ import { auth } from "./lib/auth.js";
 import userRouter from "./routes/userRoutes.js";
 import projectRouter from "./routes/projectRoutes.js";
 import { stripeWebhook } from "./controller/stripeWebhook.js";
+
+import "dotenv/config";
 
 const app = express();
 
