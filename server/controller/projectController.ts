@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 
 import prisma from "../lib/prisma.js";
 import openai from "../config/openai.js";
-import { role } from "better-auth/plugins";
 
 // To make revisions
 export const makeRevision = async (req: Request, res: Response) => {

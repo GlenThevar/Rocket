@@ -1,12 +1,14 @@
 import express, { Request, Response } from "express";
-import "dotenv/config";
 import cors, { CorsOptions } from "cors";
 import { toNodeHandler } from "better-auth/node";
+import path from "path";
 
 import { auth } from "./lib/auth.js";
 import userRouter from "./routes/userRoutes.js";
 import projectRouter from "./routes/projectRoutes.js";
 import { stripeWebhook } from "./controller/stripeWebhook.js";
+
+import "dotenv/config";
 
 const app = express();
 
@@ -23,18 +25,21 @@ app.post(
     express.raw({ type: "application/json" }),
     stripeWebhook
 );
-
 app.all("/api/auth/{*any}", toNodeHandler(auth));
-
 app.use(express.json({ limit: "50mb" }));
-
-app.get("/", (req: Request, res: Response) => {
-    res.send("Server is Live!");
-});
-
 app.use("/api/user", userRouter);
 app.use("/api/project", projectRouter);
 
+
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/dist")));
+
+    app.get("{*any}", (req, res) => {
+        res.sendFile(path.join(__dirname, "/../client/dist/index.html"));
+    });
+}
+
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at ${port}`);
 });

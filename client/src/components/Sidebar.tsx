@@ -28,7 +28,15 @@ const Sidebar = ({
     setIsGenerating,
 }: SidebarProps) => {
     const messageRef = useRef<HTMLDivElement>(null);
+    const inputFormRef = useRef<HTMLFormElement>(null);
     const [input, setInput] = useState("");
+
+    // When a suggestion is clicked, send it as a user message
+    const handleSuggestionClick = (suggestion: string) => {
+        if (isGenerating) return;
+        setInput(suggestion);
+        // Do NOT auto-submit; user must click Send
+    };
 
     const fetchProject = async () => {
         try {
@@ -241,7 +249,7 @@ const Sidebar = ({
                 </div>
 
                 {/* Input Area */}
-                <form onSubmit={handleRevisions} className="m-3 relative">
+                <form ref={inputFormRef} onSubmit={handleRevisions} className="m-3 relative">
                     <div className="flex items-center gap-2">
                         <textarea
                             onChange={(e) => setInput(e.target.value)}
@@ -263,6 +271,33 @@ const Sidebar = ({
                         </button>
                     </div>
                 </form>
+
+                {/* AI Redesign Suggestions (bottom) */}
+                <div className="w-full px-3 pb-2">
+                    <div className="bg-gray-900/80 border border-gray-700 rounded-xl shadow-lg p-4 mb-3">
+                        <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-semibold text-white">AI redesign suggestions</span>
+                            <button className="text-xs text-indigo-400 hover:underline">Refresh</button>
+                        </div>
+                        <ul className="space-y-2">
+                            {[
+                                "Improve the hero section with a stronger headline and more specific CTA.",
+                                "Refine spacing between sections and use consistent card padding throughout.",
+                                "Increase mobile readability with larger paragraph line-height and button sizes.",
+                                "Strengthen visual hierarchy by emphasizing section titles and key value points."
+                            ].map((suggestion, idx) => (
+                                <li
+                                    key={idx}
+                                    className="bg-gray-800 rounded-lg px-3 py-2 text-gray-100 text-sm cursor-pointer hover:bg-indigo-900/40 transition-all"
+                                    onClick={() => handleSuggestionClick(suggestion)}
+                                >
+                                    {suggestion}
+                                </li>
+                            ))}
+                        </ul>
+                    {/* (removed stray function definition, fixed syntax error) */}
+                    </div>
+                </div>
             </div>
         </div>
     );

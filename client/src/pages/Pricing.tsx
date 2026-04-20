@@ -106,7 +106,7 @@ const Pricing = () => {
                                 <button
                                     onClick={() => handlePurchase(plan.id)}
                                     className="px-6 py-1.5 max-sm:text-sm text-black font-medium
-               bg-gradient-to-r from-[#00FFC6] to-[#009E7F]
+               bg-linear-to-r from-[#00FFC6] to-[#009E7F]
                rounded-md
                shadow-[0_0_20px_rgba(0,255,198,0.4)]
                hover:shadow-[0_0_30px_rgba(0,255,198,0.7)]

@@ -20,8 +20,8 @@ const Community = () => {
         } catch (error: any) {
             toast.error(
                 error?.response?.data?.message ||
-                    error.message ||
-                    "Something went wrong"
+                error.message ||
+                "Something went wrong"
             );
             console.error(error);
             setLoading(false);
@@ -75,7 +75,7 @@ const Community = () => {
                                     </div>
 
                                     {/* Project Details */}
-                                    <div className="p-4 text-white bg-gradient-to-b from-transparent to-transparent group-hover:from-indigo-950 transition-colors">
+                                    <div className="p-4 text-white bg-linear-to-b from-transparent to-transparent group-hover:from-indigo-950 transition-colors">
                                         <div className="flex items-start justify-between">
                                             <h2 className="text-lg font-medium line-clamp-2">
                                                 {project.name}
