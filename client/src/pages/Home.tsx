@@ -1,10 +1,12 @@
 import api from "@/config/axios";
 import { authClient } from "@/lib/auth-client";
-
 import { Loader2Icon } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+
+import TextScramble from "@/components/gsap/scrambleText";
+
 
 const Home = () => {
     const [input, setInput] = useState("");
@@ -46,12 +48,7 @@ const Home = () => {
             <h1 className="text-center text-[40px] leading-12 md:text-6xl md:leading-[70px] font-semibold max-w-3xl">
                 Turn thoughts into websites instantly, with AI.
             </h1>
-
-            <p className="text-center text-base max-w-md mt-2">
-                Create, customize and publish faster than ever with intelligent
-                design powered by AI.
-            </p>
-
+            <TextScramble />
             <form
                 onSubmit={onSubmitHandler}
                 className="bg-white/10 max-w-2xl w-full rounded-xl p-4 mt-10 border border-base-300 focus-within:ring-1 ring-white transition-all"

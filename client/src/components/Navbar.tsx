@@ -169,6 +169,7 @@ const Navbar = () => {
             )}
 
             {/* BACKGROUND IMAGE */}
+
             <svg
                 className="absolute inset-0 -z-10 size-full blur-[300px]"
                 width="1440"
